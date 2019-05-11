@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>CODE:ME js-e8</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <link href="css/style.css" type="text/css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <!-- kontener gry -->
+        <div id="arkanoid" class="game" role="application" tabindex="-1">
+            <!--
+                atrybut ref będzie potrzebny, zeby utworzyć obiekt widoku view
+                przechowujacy referencje do obiektow interface DOM danych elementów
+            -->
+
+            <!-- panel informacyjny -->
+            <div class="panel">
+                <div class="lifes">
+                    Lifes:
+                    <span ref="lifes">3</span>
+                </div>
+                <div class="score">
+                    Score:
+                    <span ref="score">0</span>
+                </div>
+            </div>
+
+            <!--
+                arena - jest kontenerem naszej gry, w której porusza sie
+                piłka (ref="ball"),
+                platfoema (ref="paddle")
+                tworzy granice ruchu i jako element relatywny tworzy granice dla powyzszych elementów
+            -->
+            <div class="arena" ref="arena">
+                <!-- kontener, w którym znajdują się cegiełki dynamicznie utworzone podczas tworzenia gry -->
+                <div class="bricks" ref="bricks">
+                </div>
+                <div class="paddle" ref="paddle"></div>
+                <div class="ball" ref="ball"></div>
+            </div>
+        </div>
+
+        <script src="scripts/game.js"></script>
+    </body>
+
+</html>
