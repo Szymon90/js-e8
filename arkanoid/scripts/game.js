@@ -20,6 +20,7 @@
         const span = document.createElement('span');
         wrapper.appendChild(span);
         panelElement.appendChild(wrapper);
+        span.innerHTML = lifes;
         return span;
     }());
 
@@ -29,6 +30,7 @@
         const span = document.createElement('span');
         wrapper.appendChild(span);
         panelElement.appendChild(wrapper);
+        span.innerHTML = score;
         return span;
     }());
 
@@ -36,6 +38,62 @@
     paddleElement.classList.add('paddle');
     const ballElement = document.createElement('div');
     ballElement.classList.add('ball');
+
+    let deltaX = 1;
+    let deltaY = 1;
+    setInterval(function () {
+
+        const arenaWidth = arenaElement.offsetWidth;
+        const arenaHeight = arenaElement.offsetHeight;
+
+        if (ballElement.offsetLeft >= arenaWidth - ballElement.offsetWidth) {
+            deltaX = -1;
+        }
+
+        if (ballElement.offsetLeft === 0) {
+            deltaX = 1;
+        }
+
+        if (ballElement.offsetTop >= arenaHeight - ballElement.offsetWidth) {
+            deltaY = -1;
+        }
+
+        if (ballElement.offsetTop === 0) {
+            deltaY = 1;
+        }
+
+        ballElement.style.top = `${ballElement.offsetTop + deltaY}px`;
+        ballElement.style.left = `${ballElement.offsetLeft + deltaX}px`;
+    }, 10);
+
+    const onMouseMove = function () {
+
+    };
+
+    paddleElement.addEventListener(
+        'mousedown',
+        function (e) {
+            console.log(e);
+            document.addEventListener(
+                'mousemove',
+                onMouseMove,
+                false
+            );
+        },
+        false
+    );
+
+    paddleElement.addEventListener(
+        'mouseup',
+        function () {
+            document.removeEventListener(
+                'mousemove',
+                onMouseMove,
+                false
+            );
+        },
+        false
+    );
 
     arenaElement.appendChild(paddleElement);
     arenaElement.appendChild(ballElement);
