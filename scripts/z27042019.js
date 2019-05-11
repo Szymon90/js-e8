@@ -4,8 +4,10 @@
 
 const tpl = {
     nodeName: 'div',
-    id: 'node-div-1',
-    title: '...',
+    attributes: {
+        id: 'node-div-1',
+        title: '...'
+    },
     children: [{
         nodeName: 'div',
         id: 'node-div-2',
@@ -25,11 +27,16 @@ const tpl = {
 };
 
 function strChildren(children) {
+    if (!children) {
+        return '';
+    }
+
     const output = (Array.isArray(children) ? children : [children]).map(
         element => {
             return `
-                <${element.nodeName} id="{element.id}">
-                    ${strChildren(element.children)}
+                <${element.nodeName} id="${element.id}">
+                    ${element.children ?  strChildren(element.children): ''}
+                    ${element.text ? element.text : ''}
                 </${element.nodeName}>
             `;
         }
@@ -40,4 +47,8 @@ function strChildren(children) {
 
 
 const html = strChildren(tpl);
-console.log(html)
+//console.log(html);
+
+document.body.innerHTML = html;
+
+Object.keys(tpl.attributes)
