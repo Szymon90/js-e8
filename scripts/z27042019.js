@@ -33,11 +33,16 @@ function strChildren(children) {
 
     const output = (Array.isArray(children) ? children : [children]).map(
         element => {
+            const {
+                nodeName,
+                children,
+                text = ''
+            } = element;
             return `
-                <${element.nodeName} id="${element.id}">
-                    ${element.children ?  strChildren(element.children): ''}
-                    ${element.text ? element.text : ''}
-                </${element.nodeName}>
+                <${nodeName} id="${element.id}">
+                    ${children ?  strChildren(children): ''}
+                    ${text}
+                </${nodeName}>
             `;
         }
     );
@@ -51,4 +56,49 @@ const html = strChildren(tpl);
 
 document.body.innerHTML = html;
 
-Object.keys(tpl.attributes)
+prepareAttributes(tpl.attributes);
+
+function prepareAttributes(attributes) {
+    return Object.entries(attributes)
+        .map(function (item) {
+            return `${item[0]}="${item[1]}"`;
+            // return item[0] + '="' + item[1] + '"';
+        })
+        .join(' ');
+}
+
+
+function fn(param1, ...rest) {
+    console.log(param1, rest);
+}
+
+const {
+    title: myTitle,
+    id,
+    lol = 'LOL'
+} = tpl.attributes;
+
+const arr = ['a', 'b', 'c'];
+
+const [myA] = arr;
+
+const objA = {
+    a: 1,
+    b: 'a'
+};
+
+const objB = {
+    c: 2,
+    d: 'b'
+};
+
+const objC = {
+    ...objA,
+    ...objB,
+    a: 3,
+    f: 'c'
+};
+
+function fn1({ nodeName, ...rest }) {
+    console.log(nodeName, rest);
+}
