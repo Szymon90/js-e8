@@ -27,6 +27,10 @@
     paddleElement.classList.add('paddle');
     const ballElement = document.createElement('div');
     ballElement.classList.add('ball');
+    const bricksElement = document.createElement('div');
+    bricksElement.classList.add('bricks');
+
+    bricksElement.innerHTML = '<div class="brick"></div>'.repeat(30);
 
     let deltaX = 1;
     let deltaY = 1;
@@ -105,6 +109,7 @@
         false
     );
 
+    arenaElement.appendChild(bricksElement);
     arenaElement.appendChild(paddleElement);
     arenaElement.appendChild(ballElement);
     gameElement.appendChild(panelElement);
