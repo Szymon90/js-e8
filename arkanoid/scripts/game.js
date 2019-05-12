@@ -73,7 +73,10 @@
     paddleElement.addEventListener(
         'mousedown',
         function (e) {
-            console.log(e);
+            e.stopPropagation();
+            e.preventDefault();
+
+
             document.addEventListener(
                 'mousemove',
                 onMouseMove,
@@ -100,4 +103,4 @@
     gameElement.appendChild(panelElement);
     gameElement.appendChild(arenaElement);
     document.body.appendChild(gameElement);
-}())
+}());
