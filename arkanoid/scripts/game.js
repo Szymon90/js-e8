@@ -2,6 +2,11 @@
     let score = 0;
     let lifes = 3;
 
+    let paddleLeft;
+
+    let ballLeft;
+    let ballTop;
+
     const gameElement = document.createElement('div');
     gameElement.id = 'arkanoid';
     gameElement.setAttribute('role', 'application');
@@ -14,25 +19,9 @@
     const arenaElement = document.createElement('div');
     arenaElement.classList.add('arena');
 
-    const lifesElement = (function () {
-        const wrapper = document.createElement('div');
-        wrapper.innerHTML = 'Lifes: ';
-        const span = document.createElement('span');
-        wrapper.appendChild(span);
-        panelElement.appendChild(wrapper);
-        span.innerHTML = lifes;
-        return span;
-    }());
+    const lifesElement = pannelElement({text: 'Lifes: ', value: lifes});
 
-    const scoreElement = (function () {
-        const wrapper = document.createElement('div');
-        wrapper.innerHTML = 'Score: ';
-        const span = document.createElement('span');
-        wrapper.appendChild(span);
-        panelElement.appendChild(wrapper);
-        span.innerHTML = score;
-        return span;
-    }());
+    const scoreElement = pannelElement({text: 'Score: ', value: score});
 
     const paddleElement = document.createElement('div');
     paddleElement.classList.add('paddle');
@@ -42,9 +31,12 @@
     let deltaX = 1;
     let deltaY = 1;
     setInterval(function () {
-
-        const arenaWidth = arenaElement.offsetWidth;
-        const arenaHeight = arenaElement.offsetHeight;
+        const {
+            offsetWidth: arenaWidth,
+            offsetHeight: arenaHeight
+        } = arenaElement;
+/*         const arenaWidth = arenaElement.offsetWidth;
+        const arenaHeight = arenaElement.offsetHeight; */
 
         if (ballElement.offsetLeft >= arenaWidth - ballElement.offsetWidth) {
             deltaX = -1;
@@ -58,16 +50,31 @@
             deltaY = -1;
         }
 
+        if (ballElement.offsetTop >= paddleElement.offsetTop - ballElement.offsetWidth) {
+            if (ballLeft > paddleLeft && ballLeft < paddleLeft + paddleElement.offsetWidth) {
+                deltaY = -1;
+            }
+        }
+
         if (ballElement.offsetTop === 0) {
             deltaY = 1;
         }
 
-        ballElement.style.top = `${ballElement.offsetTop + deltaY}px`;
-        ballElement.style.left = `${ballElement.offsetLeft + deltaX}px`;
+        ballTop = ballElement.offsetTop + deltaY;
+        ballLeft = ballElement.offsetLeft + deltaX;
+
+        ballElement.style.top = `${ballTop}px`;
+        ballElement.style.left = `${ballLeft}px`;
     }, 10);
 
-    const onMouseMove = function () {
+    const onMouseMove = function (e) {
+        const {left: arenaLeft, right: arenaRight} = arenaElement.getBoundingClientRect();
 
+        if (e.pageX > arenaLeft && e.pageX < arenaRight - paddleElement.offsetWidth) {
+            paddleLeft = e.pageX - arenaLeft;
+        }
+
+        paddleElement.style.left = `${paddleLeft}px`;
     };
 
     paddleElement.addEventListener(
@@ -103,4 +110,15 @@
     gameElement.appendChild(panelElement);
     gameElement.appendChild(arenaElement);
     document.body.appendChild(gameElement);
+
+    function pannelElement({text, value}) {
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = text;
+        const span = document.createElement('span');
+        wrapper.appendChild(span);
+        panelElement.appendChild(wrapper);
+        span.innerHTML = value;
+        return span;
+    }
 }());
+
