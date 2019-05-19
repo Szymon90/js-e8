@@ -1,3 +1,55 @@
+/**
+ *
+ * Wisielec:
+ * 1. lista slow do zastosowania w grze
+ * 2. start gry - wybieramy losowo slowo z listy
+ * 3. pokazujemy ilosc znakow np. w postaci _
+ * 4. uzytkownik wpisuje litere
+ *   prompt, confirm
+ * 5. sprawdzamy czy znak wystepuje w slowie
+ *  - jezeli znak istnieje w slowie np. zamienic _ na dany znak
+ *  - jezeli nie istnieje - ???
+ *  - wracamy do wpisywania znaku
+ *
+ *
+ *
+ */
+
+(function () {
+    const words = ['javascript', 'ryba', 'pies', 'komputer'];
+    const index = Math.floor(Math.random() * words.length);
+    const word = words[index];
+
+    let state = word.length;
+    // '_'.repeat(word.length).split('');
+    // const hiddenWord = word.replace(/./g, '_').split('');
+    const hiddenWord = [...word.replace(/./g, '_')];
+
+    while (state) {
+        const char = prompt(`Podaj litere dla słowa: ${hiddenWord.join(' ')}`);
+
+        if (!char) {
+            return;
+        }
+
+        for (let i = 0; i < word.length; i += 1) {
+            if (word[i] === char) {
+                hiddenWord[i] = char;
+                state -= 1;
+            }
+        }
+
+        /*
+            word.replace(new RegExp(char, 'g'), function ($0, $1) {
+                hiddenWord[$1] = $0;
+                state -= 1;
+                return $0;
+            });
+        */
+    }
+}());
+
+
 const template = `
     <div id="arkanoid" class="game" role="application" tabindex="-1">
         <div class="panel">
@@ -7,7 +59,7 @@ const template = `
             </div>
             <div class="score">
                 Score:
-                <span ref="score">0</span>
+                <span ref="score">{%score%}</span>
             </div>
         </div>
         <div class="arena" ref="arena">
@@ -16,7 +68,48 @@ const template = `
             <div class="ball" ref="ball"></div>
         </div>
     </div>
+    <div>LOL</div>
 `;
+
+(function () {
+    const div = document.createElement('div');
+    div.innerHTML = template;
+    const gameElement = div.firstElementChild;
+    const elements = [...gameElement.querySelectorAll('[ref]')]
+
+    /*
+    const obj = {};
+
+    for (let element of elements) {
+        const name = element.getAttribute('ref');
+        obj[name] = element;
+    }
+    */
+
+    const tpl = elements.reduce(function (obj, element) {
+        const name = element.getAttribute('ref');
+        obj[name] = element;
+        return obj;
+    }, {});
+
+    const {
+        lifes: lifesElement,
+        score: scoreElement,
+        arena: arenaElement
+    } = obj;
+
+    console.log(obj);
+
+    for (let i = 0; i < elements.length; i += 1) {
+
+    }
+
+    /* const templateElement = document.createElement('template');
+    templateElement.innerHTML = template;
+    const content = templateElement.content; */
+
+}());
+
 
 /* string
 number
@@ -29,10 +122,10 @@ Function
 Array
 String */
 
-console.log('s' === new String('s'));
+/* console.log('s' === new String('s'));
 console.log(typeof 's');
 console.log(typeof new String('s'));
-
+ */
 /*
 'string'.split('');
 (6) ["s", "t", "r", "i", "n", "g"]
