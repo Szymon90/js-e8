@@ -107,11 +107,24 @@ Object.assign(MyArray.prototype, {
         this.length = endLength;
         return endLength;
     },
-    forEach: function () {
+    forEach: function (callback) {
+        const list = this;
+        const length = list.length;
 
+        for (let i = 0; i < length; i += 1) {
+            callback(list[i], i);
+        }
     },
-    map: function () {
+    map: function (callback) {
+        const arr = new MyArray();
+        const list = this;
+        const length = list.length;
 
+        for (let i = 0; i < length; i += 1) {
+            const ret = callback(list[i], i);
+            arr.push(ret);
+        }
+        return arr;
     }
 });
 
