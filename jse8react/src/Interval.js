@@ -7,10 +7,13 @@ export default class Interval extends Component {
 
     constructor() {
         super();
+
+        this.myRefDiv = React.createRef();
     }
 
     componentDidMount() {
         this.intervalUID = setInterval(() => {
+            console.log(this.myRefDiv.current);
             this.setState({
                 number: this.state.number + 1
             });
@@ -25,7 +28,7 @@ export default class Interval extends Component {
         const { number } = this.state;
 
         return (
-            <div>{number}</div>
+            <div ref={this.myRefDiv}>{number}</div>
         );
     }
 }

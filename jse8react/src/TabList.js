@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import Tab from './Tab';
 
 const tabs = [{
@@ -17,7 +18,7 @@ const TabList = ({
     const [activeTab, setActiveTab] = useState(defaultActiveTab);
 
     return (
-        <div style={{display: 'flex'}}>
+        <TabLIstDiv>
             {tabs.map((tab, index) => (
                 <Tab
                     key={`tablist-${index}`}
@@ -27,8 +28,12 @@ const TabList = ({
                     setActiveTab={index => {setActiveTab(index); setTab(index);}}
                 />
             ))}
-        </div>
+        </TabLIstDiv>
     );
 }
+
+const TabLIstDiv = styled.div`
+    display: flex;
+`;
 
 export default TabList;

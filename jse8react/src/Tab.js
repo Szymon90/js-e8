@@ -1,15 +1,21 @@
 import React from 'react';
-
+import styled from 'styled-components';
 
 const Tab = ({ checked, label, index, setActiveTab, setLol, children}) => {
     return (
-        <div
+        <TabWrapper
+            checked={checked}
             onClick={() => setActiveTab(index)}
-            style={{color: checked ? 'blue' : 'black'}}
         >
             {label}
-        </div>
+        </TabWrapper>
     )
 }
+
+const TabWrapper = styled.div`
+    padding: 2px 8px;
+    font-size: 13px;
+    background-color: ${props => props.checked ? 'blue' : '#eee'};
+`;
 
 export default Tab;
