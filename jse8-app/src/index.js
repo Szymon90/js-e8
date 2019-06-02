@@ -8,6 +8,8 @@ import rootReducer from './reducers';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
+import Header from './components/Header';
+
 const composeEnhancers = composeWithDevTools({});
 
 ReactDOM.render(
@@ -19,6 +21,7 @@ ReactDOM.render(
             )
         )
     }>
+        <Header title="CM-JS-E-8" />
     </Provider>,
     document.body
 );
