@@ -37,7 +37,8 @@ const mapStateToProps = ({ isShellOpen }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    setShellIsOpen: () => dispatch(setIsOpen())
+    setShellIsOpen: compose(dispatch, setIsOpen)
+    //() => dispatch(setIsOpen())
 })
 
 export default connect(
