@@ -9,6 +9,7 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 import Header from './components/Header';
+import Shell from './components/Shell';
 
 const composeEnhancers = composeWithDevTools({});
 
@@ -22,6 +23,7 @@ ReactDOM.render(
         )
     }>
         <Header title="CM-JS-E-8" />
+        <Shell />
     </Provider>,
     document.body
 );

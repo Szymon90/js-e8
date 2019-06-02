@@ -2,6 +2,8 @@ import {
     combineReducers
 } from 'redux';
 
-export default combineReducers({
+import { isShellOpen } from './components/Shell/reducers';
 
+export default combineReducers({
+    isShellOpen
 });
