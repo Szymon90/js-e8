@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+import setIsOpen from './actions/setIsOpen';
 
-function Shell() {
-    /* const isOpenState = useState();
-    const isOpen = isOpenState[0];
-    const setIsOpen = isOpenState[1]; */
-    const [isOpen, setIsOpen] = useState(false);
-    return isOpen ? (
-            <Wrapper>
+function Shell(props) {
+    console.log('PROPS SHELL ->> ', props);
+    return props.isShellOpen ? (
+            <Wrapper onClick={props.setShellIsOpen}>
                 <ShellWrapper />
             </Wrapper>
         ) : null;
@@ -32,4 +31,15 @@ const ShellWrapper = styled.div`
     width: 100%;
 `;
 
-export default Shell;
+const mapStateToProps = ({ isShellOpen }) => ({
+    isShellOpen
+});
+
+const mapDispatchToProps = dispatch => ({
+    setShellIsOpen: () => dispatch(setIsOpen())
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Shell);

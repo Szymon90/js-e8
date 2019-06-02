@@ -1,9 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Menu } from '@material-ui/icons';
 
 function Header(props) {
-
+    console.log('PROPS HEADER ->', props )
     return (
         <Wrapper>
             <MenuIcon />
@@ -37,4 +38,8 @@ const MenuIcon = styled(Menu)`
     color: #fff;
 `
 
-export default Header;
+const mapStateToProps = (state) => ({
+    isShellOpen: state.isShellOpen
+})
+
+export default connect(mapStateToProps)(Header);
