@@ -8,7 +8,7 @@ import rootReducer from './reducers';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
-import Header from './components/Header';
+import Header from './components/Header/Header';
 import Shell from './components/Shell';
 
 const composeEnhancers = composeWithDevTools({});

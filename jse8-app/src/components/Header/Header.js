@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Menu } from '@material-ui/icons';
+import setShellIsOpen from './actions/setShellIsOpen';
 
 function Header(props) {
     console.log('PROPS HEADER ->', props )
     return (
         <Wrapper>
-            <MenuIcon />
+            <MenuIcon onClick={props.setShellIsOpen} />
             <H2>{props.title}</H2>
         </Wrapper>
     );
@@ -40,6 +41,13 @@ const MenuIcon = styled(Menu)`
 
 const mapStateToProps = (state) => ({
     isShellOpen: state.isShellOpen
-})
+});
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = dispatch => ({
+    setShellIsOpen: () => dispatch(setShellIsOpen())
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Header);
