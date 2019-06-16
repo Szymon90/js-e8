@@ -1,26 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
-import {
-    AddTodo,
-    Footer,
-    VisibleTodoList,
-} from './components'
+import React from 'react'
+import Footer from './Footer'
+import AddTodo from './components/AddTodoContainer'
+import VisibleTodoList from '../containers/VisibleTodoList'
 
-const ToDoList = () => (
-    <Wrapper>
-        <header>
-            <h3>Todo list</h3>
-        </header>
+const TodoList = () => (
+    <div>
         <AddTodo />
         <VisibleTodoList />
         <Footer />
-    </Wrapper>
-);
+    </div>
+)
 
-const Wrapper = styled.section`
-    display: flex;
-    flex-direction: column;
-    margin-top: 86px;
-`
-
-export default ToDoList;
+export default TodoList

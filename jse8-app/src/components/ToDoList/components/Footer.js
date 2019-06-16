@@ -1,8 +1,8 @@
 import React from 'react'
-import { VisibilityFilters } from '../constants'
 import FilterLink from './FilterLinkContainer'
+import { VisibilityFilters } from '../constants'
 
-export default () => (
+const Footer = () => (
     <div>
         <span>Show: </span>
         <FilterLink filter={VisibilityFilters.SHOW_ALL}>All</FilterLink>
@@ -10,3 +10,5 @@ export default () => (
         <FilterLink filter={VisibilityFilters.SHOW_COMPLETED}>Completed</FilterLink>
     </div>
 )
+
+export default Footer

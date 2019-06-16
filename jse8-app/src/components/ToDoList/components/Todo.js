@@ -1,17 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const Todo = ({ onClick, completed, text }) => (
-    <Li
-        onClick={onClick}
-    >
+    <Li onClick={onClick}>
         {text}
     </Li>
 )
 
 const Li = styled.li`
-    text-decoration: ${({completed}) => completed ? 'line-through' : 'none'}
+    text-decoration: ${props => props.completed ? 'line-through' : 'none'};
 `
 
 Todo.propTypes = {

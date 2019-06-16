@@ -1,27 +1,25 @@
 import React, { createRef } from 'react'
-import { connect } from 'react-redux'
-import { addTodo } from '../actions'
 
-const AddTodo = ({ dispatch }) => {
-    let input = createRef()
+const AddTodo = ({ addTodo }) => {
+    let DOMInput = createRef()
 
     return (
         <div>
-            <form
-                onSubmit={e => {
-                    e.preventDefault()
-                    if (!input.current.value.trim()) {
-                        return
-                    }
-                    dispatch(addTodo(input.current.value))
-                    input.current.value = ''
-                }}
-            >
-                <input ref={input} />
-                <button type="submit">Add Todo</button>
-            </form>
+        <form
+            onSubmit={e => {
+                e.preventDefault()
+                if (!DOMInput.current.value.trim()) {
+                    return
+                }
+                addTodo(DOMInput.current.value)
+                DOMInput.current.value = ''
+            }}
+        >
+            <input ref={DOMInput} />
+            <button type="submit">Add Todo</button>
+        </form>
         </div>
     )
 }
 
-export default connect()(AddTodo)
+export default AddTodo
