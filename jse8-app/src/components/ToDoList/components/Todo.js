@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const Todo = ({ onClick, completed, text }) => (
-    <Li onClick={onClick}>
+    <Li onClick={onClick} completed={completed}>
         {text}
     </Li>
 )
