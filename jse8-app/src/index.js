@@ -11,6 +11,7 @@ import * as serviceWorker from './serviceWorker';
 import Header from './components/Header/Header';
 import Shell from './components/Shell';
 import Data from './components/Data';
+import ToDoList from './components/ToDoList'
 
 const composeEnhancers = composeWithDevTools({});
 
@@ -25,7 +26,7 @@ ReactDOM.render(
     }>
         <Header title="CM-JS-E-8" />
         <Shell />
-        <Data />
+        <ToDoList />
     </Provider>,
     document.body
 );
