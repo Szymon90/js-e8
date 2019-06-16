@@ -5,3 +5,7 @@ export const VisibilityFilters = {
 }
 
 export const TODOLIST_SET_VISIBILITY_FILTER = 'TODOLIST_SET_VISIBILITY_FILTER'
+
+export const TODOLIST_ADD_TODO = 'TODOLIST_ADD_TODO'
+
+export const TODOLIST_TOGGLE_TODO = 'TODOLIST_TOGGLE_TODO'

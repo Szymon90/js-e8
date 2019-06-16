@@ -1,7 +1,7 @@
 import React from 'react'
-import Footer from './Footer'
+import Footer from './components/Footer'
 import AddTodo from './components/AddTodoContainer'
-import List from '../components/ListContainer'
+import List from './components/ListContainer'
 
 const TodoList = () => (
     <div>
