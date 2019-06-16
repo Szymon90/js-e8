@@ -1,3 +1,14 @@
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
 
-export default () => null
+const ToDoList = () => (
+    <Wrapper>
+
+    </Wrapper>
+);
+
+const Wrapper = styled.section`
+    display: flex;
+`
+
+export default ToDoList;
