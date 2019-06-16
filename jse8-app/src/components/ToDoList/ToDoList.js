@@ -1,12 +1,12 @@
 import React from 'react'
 import Footer from './Footer'
 import AddTodo from './components/AddTodoContainer'
-import VisibleTodoList from '../containers/VisibleTodoList'
+import List from '../components/ListContainer'
 
 const TodoList = () => (
     <div>
         <AddTodo />
-        <VisibleTodoList />
+        <List />
         <Footer />
     </div>
 )
