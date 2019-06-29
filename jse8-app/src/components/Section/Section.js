@@ -4,15 +4,15 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import withFetchData from '../withFetchData';
-// import { fetchDataSuccess } from './actions';
+import { fetchDataSuccess } from './actions';
 import get from '../../utils/get';
 
-const path = '/collections/:id?page=1&perPage=10&orderBy=latest';
+const path = '/collections/:id/photos?page=1&perPage=10&orderBy=latest';
 
-function Section({ sections }) {
-    return sections.length && (
+function Section({ photos }) {
+    return photos.length && (
         <Wrapper>
-            {sections.map(
+            {photos.map(
                 (item, index) => {
                     const imgSrc = get(item, 'cover_photo.urls.thumb', '');
                     return (
@@ -44,13 +44,13 @@ const Container = styled.div`
 
 `
 
-const mapStateToProps = ({sections }) => ({
-    sections
+const mapStateToProps = ({ photos }) => ({
+    photos
 })
 
-/* const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
     fetchDataSuccess: compose(dispatch, fetchDataSuccess)
-}) */
+})
 
 const mergeProps = (fromState ={}, fromDispatch ={}, ownProps) => ({
     path: path.replace(':id', ownProps.match.params.id),
@@ -58,4 +58,7 @@ const mergeProps = (fromState ={}, fromDispatch ={}, ownProps) => ({
     ...fromDispatch
 })
 
-export default connect(null, null, mergeProps)(props => {console.log(props); return <div />})
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps, mergeProps),
+    withFetchData
+)(Section)
