@@ -15,6 +15,7 @@ import Data from './components/Data';
 // import TodoList from './components/TodoList'
 import Sections from './components/Sections'
 import Section from './components/Section'
+import Photo from './components/Photo'
 
 const composeEnhancers = composeWithDevTools({});
 
@@ -36,6 +37,7 @@ ReactDOM.render(
             <Route path="/todoList/" component={TodoList} /> */}
             <Route path="/sections/" component={Sections} />
             <Route path="/section/:id" component={Section} />
+            <Route path="/photo/:id" component={Photo} />
             {/* <Route component={() => `PAGE NOT FOUND`} /> */}
         </Router>
     </Provider>,

@@ -16,7 +16,7 @@ function Section({ photos }) {
                 (item, index) => {
                     const imgSrc = get(item, 'cover_photo.urls.thumb', '');
                     return (
-                        <Link to={`/section/${item.id}`}>
+                        <Link to={`/photo/${item.id}`}>
                             <Container>
                                 <h3>{item.title}</h3>
                                 {imgSrc && <img src={imgSrc} alt="" />}

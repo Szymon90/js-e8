@@ -6,10 +6,12 @@ import { isShellOpen } from './components/Shell/reducers';
 //import todoList from './components/TodoList/reducers';
 import { sections } from './components/Sections/reducers';
 import { photos } from './components/Section/reducers';
+import { photo } from './components/Photo/reducers';
 
 export default combineReducers({
     isShellOpen,
     //todoList,
     photos,
+    photo,
     sections
 });
