@@ -1,6 +1,7 @@
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 import setIsOpen from './actions/setIsOpen';
 
@@ -8,7 +9,11 @@ function Shell(props) {
     console.log('PROPS SHELL ->> ', props);
     return props.isShellOpen ? (
             <Wrapper onClick={props.setShellIsOpen}>
-                <ShellWrapper />
+                <ShellWrapper>
+                    <Link to="/">Home</Link><br />
+                    <Link to="/data/">Data</Link><br />
+                    <Link to="/todoList/">ToDo List</Link>
+                </ShellWrapper>
             </Wrapper>
         ) : null;
 }

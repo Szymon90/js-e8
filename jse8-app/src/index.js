@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
@@ -10,7 +11,7 @@ import * as serviceWorker from './serviceWorker';
 
 import Header from './components/Header/Header';
 import Shell from './components/Shell';
-// import Data from './components/Data';
+import Data from './components/Data';
 import TodoList from './components/TodoList'
 
 const composeEnhancers = composeWithDevTools({});
@@ -24,9 +25,14 @@ ReactDOM.render(
             )
         )
     }>
-        <Header title="CM-JS-E-8" />
-        <Shell />
-        <TodoList />
+        <Router>
+            <Header title="CM-JS-E-8" />
+            <Shell />
+
+            <Route path="/" exact component={() => null} />
+            <Route path="/data/" component={Data} />
+            <Route path="/todoList/" component={TodoList} />
+        </Router>
     </Provider>,
     document.body
 );
