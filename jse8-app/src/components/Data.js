@@ -13,9 +13,6 @@ function Data(props) {
     );
 }
 
-const mergeProps = () => ({
-    path
-})
 
 export default compose(
     connect(
