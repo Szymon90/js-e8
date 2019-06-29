@@ -12,7 +12,7 @@ import * as serviceWorker from './serviceWorker';
 import Header from './components/Header/Header';
 import Shell from './components/Shell';
 import Data from './components/Data';
-import TodoList from './components/TodoList'
+// import TodoList from './components/TodoList'
 import Sections from './components/Sections'
 
 const composeEnhancers = composeWithDevTools({});
