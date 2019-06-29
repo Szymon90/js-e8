@@ -1,15 +1,4 @@
-const obj = {
-    a: {
-        b: {
-            c: {
-                d: 5
-            }
-        }
-    }
-};
-
-
-function get(object, path = '', defaultValue) {
+export default function (object, path = '', defaultValue) {
     const pathArray = path.split('.');
     let value = object;
     let output = defaultValue;
@@ -26,5 +15,3 @@ function get(object, path = '', defaultValue) {
 
     return output;
 }
-
-get(obj, 'a.b.e.d', 0)
