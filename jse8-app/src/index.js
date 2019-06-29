@@ -31,8 +31,8 @@ ReactDOM.render(
             <Shell />
 
             <Route path="/" exact component={() => null} />
-            <Route path="/data/" component={Data} />
-            <Route path="/todoList/" component={TodoList} />
+            <Route path="/data/" component={Data} />{/*
+            <Route path="/todoList/" component={TodoList} /> */}
             <Route path="/sections/" component={Sections} />
             {/* <Route component={() => `PAGE NOT FOUND`} /> */}
         </Router>
