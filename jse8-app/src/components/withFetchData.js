@@ -21,9 +21,7 @@ const withFetchData = (BaseComponent) =>
                 headers: UNSPLASH_COMMON_HEADERS
             })
             .then( response => response.json() )
-            .then( json => this.setState({
-                data: json
-            }));
+            .then( json => this.props.fetchDataSuccess(json));
 
         }
 
