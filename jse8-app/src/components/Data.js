@@ -13,6 +13,7 @@ function Data(props) {
     );
 }
 
+const mergeProps = () => ({})
 
 export default compose(
     connect(
