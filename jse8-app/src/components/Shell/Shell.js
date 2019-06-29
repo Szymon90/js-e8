@@ -12,7 +12,8 @@ function Shell(props) {
                 <ShellWrapper>
                     <Link to="/">Home</Link><br />
                     <Link to="/data/">Data</Link><br />
-                    <Link to="/todoList/">ToDo List</Link>
+                    <Link to="/todoList/">ToDo List</Link><br />
+                    <Link to="/sections/">Sections</Link>
                 </ShellWrapper>
             </Wrapper>
         ) : null;

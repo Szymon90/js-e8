@@ -13,6 +13,7 @@ import Header from './components/Header/Header';
 import Shell from './components/Shell';
 import Data from './components/Data';
 import TodoList from './components/TodoList'
+import Sections from './components/Sections'
 
 const composeEnhancers = composeWithDevTools({});
 
@@ -32,6 +33,8 @@ ReactDOM.render(
             <Route path="/" exact component={() => null} />
             <Route path="/data/" component={Data} />
             <Route path="/todoList/" component={TodoList} />
+            <Route path="/sections/" component={Sections} />
+            {/* <Route component={() => `PAGE NOT FOUND`} /> */}
         </Router>
     </Provider>,
     document.body
