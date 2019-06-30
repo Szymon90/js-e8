@@ -16,6 +16,7 @@ import Data from './components/Data';
 import Sections from './components/Sections'
 import Section from './components/Section'
 import Photo from './components/Photo'
+import Login from './components/Login'
 
 const composeEnhancers = composeWithDevTools({});
 
@@ -38,6 +39,7 @@ ReactDOM.render(
             <Route path="/sections/" component={Sections} />
             <Route path="/section/:id" component={Section} />
             <Route path="/photo/:id" component={Photo} />
+            <Route path="/login" component={Login} />
             {/* <Route component={() => `PAGE NOT FOUND`} /> */}
         </Router>
     </Provider>,
